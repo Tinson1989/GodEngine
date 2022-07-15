@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <windowsx.h>
 #include <tchar.h>
-
+#ifdef _USECPU
 // the WindowProc function prototype
 LRESULT CALLBACK WindowProc(HWND hWnd,
                          UINT message,
@@ -77,6 +77,16 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
     // sort through and find what code to run for the message given
     switch(message)
     {
+         case WM_PAINT:
+            {
+                PAINTSTRUCT ps;
+                HDC hdc = BeginPaint(hWnd, &ps);
+                RECT rec = { 20, 20, 60, 80};
+                HBRUSH brush = (HBRUSH)GetStockObject(BLACK_BRUSH);
+                FillRect(hdc, &rec, brush);
+                EndPaint(hWnd, &ps);
+            }
+            break;
         // this message is read when the window is closed
         case WM_DESTROY:
             {
@@ -89,3 +99,4 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
     // Handle any messages the switch statement didn't
     return DefWindowProc (hWnd, message, wParam, lParam);
 }
+#endif
