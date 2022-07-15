@@ -11,6 +11,14 @@ target("windows")
     add_deps("core")
     add_includedirs("Framework")
     add_files("Platform/Windows/**.cpp")
+    add_links("user32")
+
+target("empty")
+    set_kind("binary")
+    add_deps("core")
+    add_includedirs("Framework")
+    add_files("Platform/Empty/**.cpp")
+    set_default(true)
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
