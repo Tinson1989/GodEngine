@@ -49,24 +49,23 @@ inline void SafeRelease(T** ppInterfaceToRelease){
     }
 }
 
+//创建画布
 void CreateRenderTarget() {
     HRESULT hr;
     ID3D11Texture2D * pBackBuffer;
     
-           // Get a pointer to the back buffer
-       g_pSwapchain->GetBuffer(0, __uuidof(ID3D11Texture2D),
-          +(LPVOID*)&pBackBuffer);
+	// Get a pointer to the back buffer
+	g_pSwapchain->GetBuffer(0, __uuidof(ID3D11Texture2D),(LPVOID*)&pBackBuffer);
     
-           // Create a render-target view
-       g_pDev->CreateRenderTargetView(pBackBuffer, NULL,
-           +&g_pRTView);
+	// Create a render-target view
+	g_pDev->CreateRenderTargetView(pBackBuffer, NULL,&g_pRTView);
     pBackBuffer->Release();
     
-           // Bind the view
-       g_pDevcon->OMSetRenderTargets(1, &g_pRTView, NULL);
-    
+	// Bind the view
+	g_pDevcon->OMSetRenderTargets(1, &g_pRTView, NULL);
 }
 
+//设置视口，设置渲染结果在画布当中的映射
 void SetViewPort() {
     D3D11_VIEWPORT viewport;
     ZeroMemory(&viewport, sizeof(D3D11_VIEWPORT));
@@ -77,12 +76,12 @@ void SetViewPort() {
     viewport.Height = SCREEN_HEIGHT;
     
 	g_pDevcon->RSSetViewports(1, &viewport);
-    
 }
 
 // this is the function that loads and prepares the shaders
+//初始化渲染管道
 void InitPipeline() {
-        // load and compile the two shaders
+	// load and compile the two shaders
 	ID3DBlob * VS, * PS;
     
 	D3DReadFileToBlob(L"copy.vso", &VS);
@@ -112,12 +111,13 @@ void InitPipeline() {
 }
 
 // this is the function that creates the shape to render+
+//传入实际要绘制的模型的顶点信息
 void InitGraphics() {
 	// create a triangle using the VERTEX struct
 	VERTEX OurVertices[] ={
-   {XMFLOAT3(0.0f, 0.5f, 0.0f), XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f)},
-      {XMFLOAT3(0.45f, -0.5, 0.0f), XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f)},
-      {XMFLOAT3(-0.45f, -0.5f, 0.0f), XMFLOAT4(0.0f, 0.0f, 1.0f, 1.0f)}
+		{XMFLOAT3(0.0f, 0.5f, 0.0f), XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f)},
+		{XMFLOAT3(0.45f, -0.5, 0.0f), XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f)},
+		{XMFLOAT3(-0.45f, -0.5f, 0.0f), XMFLOAT4(0.0f, 0.0f, 1.0f, 1.0f)}
     };
 
 	// create the vertex buffer
@@ -287,12 +287,12 @@ int WINAPI WinMain(HINSTANCE hInstance,
     // create the window and use the result as the handle
     hWnd = CreateWindowEx(0,
                           _T("WindowClass1"),    // name of the window class
-                          _T("Hello, Engine![Direct 2D]"),   // title of the window
+                          _T("Hello, Engine![Direct 3D]"),   // title of the window
                           WS_OVERLAPPEDWINDOW,    // window style
                           100,    // x-position of the window
                           100,    // y-position of the window
-                          960,    // width of the window
-                          540,    // height of the window
+                          SCREEN_WIDTH,    // width of the window
+                          SCREEN_HEIGHT,    // height of the window
                           NULL,    // we have no parent window, NULL
                           NULL,    // we aren't using menus, NULL
                           hInstance,    // application handle
@@ -316,8 +316,6 @@ int WINAPI WinMain(HINSTANCE hInstance,
         DispatchMessage(&msg);
     }
 
-     // uninitialize COM
-    CoUninitialize();
 
     // return this part of the WM_QUIT message to Windows
     return msg.wParam;
@@ -332,98 +330,22 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
     switch(message)
     {
         case WM_CREATE:
-            //通过工厂创建画布和画笔
-            if (FAILED(D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &pFactory)))
-            {
-                result = -1; // Fail CreateWindowEx.
-                return result;
-            }
             wasHandled = true;
-            result = 0;
             break;
         case WM_PAINT:
-            {
-				HRESULT hr = CreateGraphicsResources(hWnd);
-	            if (SUCCEEDED(hr)){
-	                PAINTSTRUCT ps;
-	                BeginPaint(hWnd, &ps);
-	                
-	                // start build GPU draw command
-            		pRenderTarget->BeginDraw();
-            		// clear the background with white color
-            		pRenderTarget->Clear(D2D1::ColorF(D2D1::ColorF::White));
-	                // retrieve the size of drawing area
-	                D2D1_SIZE_F rtSize = pRenderTarget->GetSize();
-	                // draw a grid background.
-	                int width = static_cast<int>(rtSize.width);
-	                int height = static_cast<int>(rtSize.height);
-	                
-	                 for (int x = 0; x < width; x += 10){
-						pRenderTarget->DrawLine(
-	                    D2D1::Point2F(static_cast<FLOAT>(x), 0.0f),
-	                    D2D1::Point2F(static_cast<FLOAT>(x), rtSize.height),
-	                    pLightSlateGrayBrush,
-	                    0.5f
-	                     );
-	                 }
-
-	                for (int y = 0; y < height; y += 10){
-	                    pRenderTarget->DrawLine(
-	                       D2D1::Point2F(0.0f, static_cast<FLOAT>(y)),
-	                       D2D1::Point2F(rtSize.width, static_cast<FLOAT>(y)),
-	                       pLightSlateGrayBrush,
-	                       0.5f
-	                        );
-	                 }
-	                // draw two rectangles
-	                D2D1_RECT_F rectangle1 = D2D1::RectF(
-	                    +rtSize.width / 2 - 50.0f,
-	                    +rtSize.height / 2 - 50.0f,
-	                    +rtSize.width / 2 + 50.0f,
-	                    +rtSize.height / 2 + 50.0f);
-
-            		D2D1_RECT_F rectangle2 = D2D1::RectF(
-	                    rtSize.width / 2 - 100.0f,
-	                    rtSize.height / 2 - 100.0f,
-	                    rtSize.width / 2 + 100.0f,
-	                    rtSize.height / 2 + 100.0f
-	                     );
-
-	                // draw a filled rectangle
-            		pRenderTarget->FillRectangle(&rectangle1, pLightSlateGrayBrush);
-	                
-	                // draw a outline only rectangle
-            		pRenderTarget->DrawRectangle(&rectangle2, pCornflowerBlueBrush);
-	                
-	                // end GPU draw command building
-            		hr = pRenderTarget->EndDraw();
-	                if (FAILED(hr) || hr == D2DERR_RECREATE_TARGET){
-	                    DiscardGraphicsResources();
-	                }
-	                
-            		EndPaint(hWnd, &ps);
-	            }
-            }
+            result = CreateGraphicsResources(hWnd);
+            RenderFrame();
     		wasHandled = true;
             break;
         case WM_SIZE:
-            if (pRenderTarget != nullptr){
-                RECT rc;
-                GetClientRect(hWnd, &rc);
-                
-            	D2D1_SIZE_U size = D2D1::SizeU(rc.right - rc.left, rc.bottom - rc.top);
-            	pRenderTarget->Resize(size);
+            if (g_pSwapchain != nullptr){
+                DiscardGraphicsResources();
             }
     		wasHandled = true;
             break;
         case WM_DESTROY:
             DiscardGraphicsResources();
-            if (pFactory) {
-	            pFactory->Release();
-            	pFactory = nullptr;
-            }
     		PostQuitMessage(0);
-            result = 0;
             wasHandled = true;
             break;
             

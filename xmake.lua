@@ -1,5 +1,13 @@
 add_rules("mode.debug", "mode.release")
 
+add_requires("glslang", {configs = {binaryonly = true}})
+target("shader")
+    set_kind("binary")
+    add_rules("utils.glsl2spv", {outputdir = "build", bin2c = true})
+    add_files("Asset/Shader/*.vert")
+    add_files("Asset/Shader/*.frag")
+    add_packages("glslang")
+
 target("core")
     set_kind("static")
     add_files("Framework/**.cpp")
@@ -11,8 +19,15 @@ target("windows")
     add_deps("core")
     add_includedirs("Framework")
     add_files("Platform/Windows/**.cpp")
-    add_links("user32","gdi32", "ole32", "d2d1")
+    add_links("user32","gdi32", "ole32", "d2d1", "d3d11", "d3dcompiler")
     add_defines("_USEGPU_3D")
+    after_build(function(target)
+        if is_mode("debug") then
+            os.cp(path.join(os.projectdir(), "Asset/Shader/*.*") , "$(buildir)/windows/x64/debug")
+        else
+            os.cp(path.join(os.projectdir(), "Asset/Shader/*.*") , "$(buildir)/windows/x64/release")
+        end
+    end)
 
 target("empty")
     set_kind("binary")
@@ -20,6 +35,8 @@ target("empty")
     add_includedirs("Framework")
     add_files("Platform/Empty/**.cpp")
     set_default(true)
+
+
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
