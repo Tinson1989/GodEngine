@@ -12,7 +12,7 @@ target("windows")
     add_includedirs("Framework")
     add_files("Platform/Windows/**.cpp")
     add_links("user32","gdi32", "ole32", "d2d1")
-    add_defines("_USEGPU")
+    add_defines("_USEGPU_3D")
 
 target("empty")
     set_kind("binary")

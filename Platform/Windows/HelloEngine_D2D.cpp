@@ -4,7 +4,7 @@
 #include <windowsx.h>
 #include <tchar.h>
 #include<d2d1.h>//Direct2D的wrapper,对Direct2D简单封装
-#ifdef _USEGPU
+#ifdef _USEGPU_2D
 
 ID2D1Factory            *pFactory               = nullptr;//建造工厂的第一个接口
 ID2D1HwndRenderTarget   *pRenderTarget          = nullptr;//渲染对象，画布

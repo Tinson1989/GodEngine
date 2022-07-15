@@ -1,21 +1,6 @@
 [
 {
   "directory": "e:\\MyGameEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/IFramework", "/D_USEGPU", "/Fobuild\\.objs\\windows\\windows\\x64\\debug\\Platform\\Windows\\HelloEngine.cpp.obj", "Platform\\Windows\\HelloEngine.cpp"],
-  "file": "Platform\\Windows\\HelloEngine.cpp"
-},
-{
-  "directory": "e:\\MyGameEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/IFramework", "/D_USEGPU", "/Fobuild\\.objs\\windows\\windows\\x64\\debug\\Platform\\Windows\\HelloEngine_D2D.cpp.obj", "Platform\\Windows\\HelloEngine_D2D.cpp"],
-  "file": "Platform\\Windows\\HelloEngine_D2D.cpp"
-},
-{
-  "directory": "e:\\MyGameEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/IFramework", "/Fobuild\\.objs\\core\\windows\\x64\\debug\\Framework\\Common\\BaseApplication.cpp.obj", "Framework\\Common\\BaseApplication.cpp"],
-  "file": "Framework\\Common\\BaseApplication.cpp"
-},
-{
-  "directory": "e:\\MyGameEngine",
   "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/IFramework", "/Fobuild\\.objs\\empty\\windows\\x64\\debug\\Platform\\Empty\\EmptyApplication.cpp.obj", "Platform\\Empty\\EmptyApplication.cpp"],
   "file": "Platform\\Empty\\EmptyApplication.cpp"
 },
@@ -23,4 +8,24 @@
   "directory": "e:\\MyGameEngine",
   "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/IFramework", "/Fobuild\\.objs\\empty\\windows\\x64\\debug\\Platform\\Empty\\main.cpp.obj", "Platform\\Empty\\main.cpp"],
   "file": "Platform\\Empty\\main.cpp"
+},
+{
+  "directory": "e:\\MyGameEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/IFramework", "/D_USEGPU_3D", "/Fobuild\\.objs\\windows\\windows\\x64\\debug\\Platform\\Windows\\HelloEngine.cpp.obj", "Platform\\Windows\\HelloEngine.cpp"],
+  "file": "Platform\\Windows\\HelloEngine.cpp"
+},
+{
+  "directory": "e:\\MyGameEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/IFramework", "/D_USEGPU_3D", "/Fobuild\\.objs\\windows\\windows\\x64\\debug\\Platform\\Windows\\HelloEngine_D2D.cpp.obj", "Platform\\Windows\\HelloEngine_D2D.cpp"],
+  "file": "Platform\\Windows\\HelloEngine_D2D.cpp"
+},
+{
+  "directory": "e:\\MyGameEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/IFramework", "/D_USEGPU_3D", "/Fobuild\\.objs\\windows\\windows\\x64\\debug\\Platform\\Windows\\HelloEngine_D3D.cpp.obj", "Platform\\Windows\\HelloEngine_D3D.cpp"],
+  "file": "Platform\\Windows\\HelloEngine_D3D.cpp"
+},
+{
+  "directory": "e:\\MyGameEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/IFramework", "/Fobuild\\.objs\\core\\windows\\x64\\debug\\Framework\\Common\\BaseApplication.cpp.obj", "Framework\\Common\\BaseApplication.cpp"],
+  "file": "Framework\\Common\\BaseApplication.cpp"
 }]
