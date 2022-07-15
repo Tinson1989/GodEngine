@@ -1,8 +1,16 @@
 add_rules("mode.debug", "mode.release")
 
-target("MyGameEngine")
+target("core")
+    set_kind("static")
+    add_files("Framework/**.cpp")
+    add_headerfiles("Framework/**.hpp")
+    add_includedirs("Framework")
+
+target("windows")
     set_kind("binary")
-    add_files("src/*.cpp")
+    add_deps("core")
+    add_includedirs("Framework")
+    add_files("Platform/Windows/**.cpp")
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
