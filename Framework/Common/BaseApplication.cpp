@@ -1,5 +1,5 @@
 ﻿#include"BaseApplication.hpp"
-namespace Zephyr{
+namespace GodEngine{
     int BaseApplication::Initialize(){
         mQuit = false;
         return 0;

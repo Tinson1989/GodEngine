@@ -1,5 +1,5 @@
 ﻿#include "Common/BaseApplication.hpp"
-namespace Zephyr{
+namespace GodEngine{
     BaseApplication gApp;
     IApplication* gpApp = &gApp;
 }

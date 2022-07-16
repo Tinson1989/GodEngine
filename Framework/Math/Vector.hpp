@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <ostream>
 
-namespace Zephyr{
+namespace GodEngine{
     template<typename T, size_t SizeOfArray>
     constexpr size_t ElementCount(T(&)[SizeOfArray]) {
         return SizeOfArray;

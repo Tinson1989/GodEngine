@@ -1,9 +1,9 @@
 #include <iostream>
 #include "Interface/IApplication.hpp"
 using namespace std;
-using namespace Zephyr;
+using namespace GodEngine;
 
-namespace Zephyr{
+namespace GodEngine{
     extern IApplication* gpApp;
 }
 

@@ -8,7 +8,7 @@
 #include "Math/Math.hpp"
 
 using namespace std;
-using namespace Zephyr;
+using namespace GodEngine;
 
 /////////////
 // DEFINES //

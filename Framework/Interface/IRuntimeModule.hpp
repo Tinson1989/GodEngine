@@ -1,5 +1,5 @@
 ﻿#pragma once
-namespace Zephyr{
+namespace GodEngine{
     class IRuntimeModule{
     public:
         virtual ~IRuntimeModule(){}

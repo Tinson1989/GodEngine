@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "Interface/IApplication.hpp"
 
-namespace Zephyr{
+namespace GodEngine{
     class BaseApplication : public IApplication{
     public:
 	    int Initialize() override;

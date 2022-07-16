@@ -1,5 +1,5 @@
 #pragma once
-namespace Zephyr{
+namespace GodEngine{
 	template<typename T, size_t RowSize, size_t ColSize>
 	constexpr size_t ElementCount(T(&)[RowSize][ColSize]) { return RowSize * ColSize; }
 

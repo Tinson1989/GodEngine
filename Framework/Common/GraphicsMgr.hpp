@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include"Interface/IRuntimeModule.hpp"
-namespace Zephyr{
+namespace GodEngine{
     class GraphicsMgr : public IRuntimeModule{
     public:
         virtual ~GraphicsMgr(){}

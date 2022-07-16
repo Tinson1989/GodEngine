@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include"IRuntimeModule.hpp"
-namespace Zephyr{
+namespace GodEngine{
     class IApplication : public IRuntimeModule{
     public:
         virtual int Initialize() = 0;
