@@ -1,42 +1,27 @@
-add_rules("mode.debug", "mode.release")
+add_rules("mode.debug", "mode.release")--"mode.releasedbg","mode.minsizerel",后面两种在学习中不需要放开
 
--- add_requires("glslang", {configs = {binaryonly = true}})
--- target("shader")
---     set_kind("binary")
---     add_rules("utils.glsl2spv", {outputdir = "build", bin2c = true})
---     add_files("Asset/Shader/*.vert")
---     add_files("Asset/Shader/*.frag")
---     add_packages("glslang")
+set_project("GodEngine")
+-- set_languages("cxx17")
+if is_mode("debug") then
+    set_suffixname("_d")
+    add_defines("SDEBUG")
+    set_runtimes("MTd")
+elseif is_mode("release") then 
+    add_defines("SRELEASE")
+    set_runtimes("MT")
+-- elseif is_mode("releasedbg") then 
+--     add_defines("_RELEASEWITHDEBINFO")
+-- elseif is_mode("minsizerel") then
+--     add_defines("_MINSIZEREL")
+end
 
-target("core")
-    set_kind("static")
-    add_files("Framework/**.cpp")
-    add_headerfiles("Framework/**.hpp")
-    add_includedirs("Framework")
-
-target("windows")
+target("EditorApp")
     set_kind("binary")
-    add_deps("core")
-    add_includedirs("Framework")
-    add_files("Platform/Windows/**.cpp")
-    add_links("user32","gdi32", "ole32", "d2d1", "d3d11", "d3dcompiler", "opengl32")
-    add_defines("_USE_OPENGL")
-    after_build(function(target)
-        if is_mode("debug") then
-            os.cp(path.join(os.projectdir(), "Asset/Shader/*.*") , "$(buildir)/windows/x64/debug")
-        else
-            os.cp(path.join(os.projectdir(), "Asset/Shader/*.*") , "$(buildir)/windows/x64/release")
-        end
-    end)
-
-target("empty")
-    set_kind("binary")
-    add_deps("core")
-    add_includedirs("Framework")
-    add_files("Platform/Empty/**.cpp")
+    add_defines("_WINDOWS")
+    add_files("**.cpp")
+    add_includedirs("./")
+    add_headerfiles("**.h","**.hpp","**.inc")
     set_default(true)
-
-
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
@@ -106,4 +91,16 @@ target("empty")
 --
 -- @endcode
 --
+
+-- if is_mode("releasedbg") then
+--     set_symbols("debug")
+--     set_optimize("fastest")
+--     set_strip("all")
+-- end
+
+-- if is_mode("minsizerel") then
+--     set_symbols("hidden")
+--     set_optimize("smallest")
+--     set_strip("all")
+-- end
 

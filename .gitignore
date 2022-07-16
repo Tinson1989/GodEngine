@@ -2,7 +2,7 @@
 .xmake/
 build/
 vsxmake2022/
-vs2022/
+vsxmake/
 
 # MacOS Cache
 .DS_Store
