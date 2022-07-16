@@ -8,6 +8,7 @@
 #include "Math/Math.hpp"
 
 using namespace std;
+using namespace Zephyr;
 
 /////////////
 // DEFINES //
@@ -117,8 +118,8 @@ PFNWGLSWAPINTERVALEXTPROC wglSwapIntervalEXT;
 
 typedef struct VertexType
 {
-    VectorType position;
-    VectorType color;
+    Vector3f position;
+    Vector3f color;
 } VertexType;
 
 HDC     g_deviceContext = 0;
@@ -141,9 +142,9 @@ const char PS_SHADER_SOURCE_FILE[] = "color.ps";
 
 float g_positionX = 0, g_positionY = 0, g_positionZ = -10;
 float g_rotationX = 0, g_rotationY = 0, g_rotationZ = 0;
-float g_worldMatrix[16];
-float g_viewMatrix[16];
-float g_projectionMatrix[16];
+Matrix4x4f g_worldMatrix;
+Matrix4x4f g_viewMatrix;
+Matrix4x4f g_projectionMatrix;
 
 bool InitializeOpenGL(HWND hwnd, int screenWidth, int screenHeight, float screenDepth, float screenNear, bool vsync)
 {
@@ -255,14 +256,17 @@ bool InitializeOpenGL(HWND hwnd, int screenWidth, int screenHeight, float screen
     glCullFace(GL_BACK);
 
     // Initialize the world/model matrix to the identity matrix.
-    BuildIdentityMatrix(g_worldMatrix);
+    BuildMatrixIdentity(g_worldMatrix);
 
     // Set the field of view and screen aspect ratio.
     fieldOfView = PI / 4.0f;
     screenAspect = (float)screenWidth / (float)screenHeight;
 
+    //BuildPerspectiveFovLHMatrix(g_projectionMatrix, fieldOfView, screenAspect, screenNear, screenDepth);
     // Build the perspective projection matrix.
-    BuildPerspectiveFovLHMatrix(g_projectionMatrix, fieldOfView, screenAspect, screenNear, screenDepth);
+    //文礼大佬使用的是列矩阵，所以需要做一下转置
+    BuildMatrixPerspectiveFovLH(g_projectionMatrix, fieldOfView, screenAspect, screenNear, screenDepth);
+    TransposeInPlace(g_projectionMatrix);
 
     // Get the name of the video card.
     vendorString = (char*)glGetString(GL_VENDOR);
@@ -955,9 +959,9 @@ void RenderBuffers()
 
 void CalculateCameraPosition()
 {
-    VectorType up, position, lookAt;
+    Vector3f up, position, lookAt;
     float yaw, pitch, roll;
-    float rotationMatrix[9];
+    Matrix4x4f rotationMatrix;
 
 
     // Setup the vector that points upwards.
@@ -981,11 +985,11 @@ void CalculateCameraPosition()
     roll = g_rotationZ * 0.0174532925f;
 
     // Create the rotation matrix from the yaw, pitch, and roll values.
-    MatrixRotationYawPitchRoll(rotationMatrix, yaw, pitch, roll);
+    BuildMatrixYawPitchRoll(rotationMatrix, yaw, pitch, roll);
 
     // Transform the lookAt and up vector by the rotation matrix so the view is correctly rotated at the origin.
-    TransformCoord(lookAt, rotationMatrix);
-    TransformCoord(up, rotationMatrix);
+    TransformVector(rotationMatrix, lookAt);
+    TransformVector(rotationMatrix, up);
 
     // Translate the rotated camera position to the location of the viewer.
     lookAt.x = position.x + lookAt.x;
@@ -993,7 +997,10 @@ void CalculateCameraPosition()
     lookAt.z = position.z + lookAt.z;
 
     // Finally create the view matrix from the three updated vectors.
-    BuildViewMatrix(position, lookAt, up, g_viewMatrix);
+    //BuildViewMatrix(position, lookAt, up, g_viewMatrix);
+    //和上面一样，文礼大佬使用的是列矩阵
+    BuildMatrixViewLookatLH(g_viewMatrix, position, lookAt, up);
+    TransposeInPlace(g_viewMatrix);
 }
 
 void Draw()
@@ -1007,11 +1014,16 @@ void Draw()
 
     // Update world matrix to rotate the model
     rotateAngle += PI / 120;
-    float rotationMatrixY[16];
-    float rotationMatrixZ[16];
-    MatrixRotationY(rotationMatrixY, rotateAngle);
-    MatrixRotationZ(rotationMatrixZ, rotateAngle);
-    MatrixMultiply(g_worldMatrix, rotationMatrixZ, rotationMatrixY);
+    Matrix4x4f rotationMatrixY;
+    Matrix4x4f rotationMatrixZ;
+    BuildMatrixRotationY(rotationMatrixY, rotateAngle);
+    TransposeInPlace(rotationMatrixY);
+
+    BuildMatrixRotationZ(rotationMatrixZ, rotateAngle);
+    TransposeInPlace(rotationMatrixZ);
+
+    MatrixMultiBy(g_worldMatrix, rotationMatrixZ, rotationMatrixY);
+    TransposeInPlace(g_worldMatrix);
 
     // Generate the view matrix based on the camera's position.
     CalculateCameraPosition();

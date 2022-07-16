@@ -378,6 +378,7 @@ namespace Zephyr{
 		matrix = tmp;
 	}
 
+	//––æÿ’Û
 	inline void BuildMatrixPerspectiveFovLH(Matrix4x4f& matrix, const float fov, const float aspect, const float zn, const float zf) {
 		auto yscale = 1.0f / tanf(fov * 0.5f);
 		auto xscale = yscale / aspect;
@@ -390,6 +391,7 @@ namespace Zephyr{
 		}} };
 		matrix = tmp;
 	}
+
 
 	inline void BuildMatrixPerspectiveFovRH(Matrix4x4f& matrix, const float fov, const float aspect, const float zn, const float zf) {
 		auto yscale = 1.0f / tanf(fov * 0.5f);
