@@ -23,4 +23,10 @@ target("TestMemoryManager")
         add_includedirs(path.join(os.projectdir(),dir))
         add_includedirs("../")
     end
+
+target("TestD3D")
+    set_group("test")
+    set_kind("binary")
+    add_files("../Tests/TestD3D.cpp")
+    add_links("user32","gdi32", "ole32", "d2d1", "d3d11", "d3dcompiler", "opengl32")
    

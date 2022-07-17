@@ -34,6 +34,7 @@ target("EditorApp")
         add_includedirs("./")
     end
     set_default(true)
+    
 
 
 importSubProject("test.lua")
