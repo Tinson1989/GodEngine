@@ -20,15 +20,20 @@ elseif is_mode("release") then
 --     add_defines("_MINSIZEREL")
 end
 
+local includeDir = {"Configuration","Runtime","External/glm","Platforms"}
+
 target("EditorApp")
     set_kind("binary")
     add_defines("_WINDOWS")
-    add_files("**.cpp")
-    remove_files("Tests/**.cpp")
-    add_includedirs("./")
-    add_headerfiles("**.h","**.hpp","**.inc")
+    for _,dir in ipairs(includeDir) do
+        add_files(path.join(dir, "**.cpp"))
+        add_headerfiles(path.join(dir, "**.hpp"))
+        add_headerfiles(path.join(dir, "**.h"))
+        add_headerfiles(path.join(dir, "**.inc"))
+        add_includedirs(dir)
+        add_includedirs("./")
+    end
     set_default(true)
-    add_includedirs("External/glm/")
 
 
 importSubProject("test.lua")
