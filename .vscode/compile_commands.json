@@ -1,6 +1,16 @@
 [
 {
   "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/If:\\study\\GodEngine\\External\\glm", "/DSDEBUG", "/Fobuild\\.objs\\TestGLM\\windows\\x64\\debug\\Tests\\GLM\\TestGLM.cpp.obj", "Tests\\GLM\\TestGLM.cpp"],
+  "file": "Tests\\GLM\\TestGLM.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/If:\\study\\GodEngine\\External\\glm", "/DSDEBUG", "/Fobuild\\.objs\\TestGLM\\windows\\x64\\debug\\External\\glm\\glm\\detail\\glm.cpp.obj", "External\\glm\\glm\\detail\\glm.cpp"],
+  "file": "External\\glm\\glm\\detail\\glm.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
   "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/If:\\study\\GodEngine\\Configuration", "/I.", "/If:\\study\\GodEngine\\Runtime", "/If:\\study\\GodEngine\\External\\glm", "/DSDEBUG", "/D_WINDOWS", "/Fobuild\\.objs\\TestMemoryManager\\windows\\x64\\debug\\Tests\\TestMemoryManager.cpp.obj", "Tests\\TestMemoryManager.cpp"],
   "file": "Tests\\TestMemoryManager.cpp"
 },
@@ -18,11 +28,6 @@
   "directory": "f:\\study\\GodEngine",
   "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/If:\\study\\GodEngine\\Configuration", "/I.", "/If:\\study\\GodEngine\\Runtime", "/If:\\study\\GodEngine\\External\\glm", "/DSDEBUG", "/D_WINDOWS", "/Fobuild\\.objs\\TestMemoryManager\\windows\\x64\\debug\\External\\glm\\glm\\detail\\glm.cpp.obj", "External\\glm\\glm\\detail\\glm.cpp"],
   "file": "External\\glm\\glm\\detail\\glm.cpp"
-},
-{
-  "directory": "f:\\study\\GodEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/DSDEBUG", "/Fobuild\\.objs\\TestD3D\\windows\\x64\\debug\\Tests\\TestD3D.cpp.obj", "Tests\\TestD3D.cpp"],
-  "file": "Tests\\TestD3D.cpp"
 },
 {
   "directory": "f:\\study\\GodEngine",
@@ -46,11 +51,6 @@
 },
 {
   "directory": "f:\\study\\GodEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/If:\\study\\GodEngine\\External\\glm", "/DSDEBUG", "/Fobuild\\.objs\\TestGLM\\windows\\x64\\debug\\Tests\\GLM\\TestGLM.cpp.obj", "Tests\\GLM\\TestGLM.cpp"],
-  "file": "Tests\\GLM\\TestGLM.cpp"
-},
-{
-  "directory": "f:\\study\\GodEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/If:\\study\\GodEngine\\External\\glm", "/DSDEBUG", "/Fobuild\\.objs\\TestGLM\\windows\\x64\\debug\\External\\glm\\glm\\detail\\glm.cpp.obj", "External\\glm\\glm\\detail\\glm.cpp"],
-  "file": "External\\glm\\glm\\detail\\glm.cpp"
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/DSDEBUG", "/Fobuild\\.objs\\TestD3D\\windows\\x64\\debug\\Tests\\TestD3D.cpp.obj", "Tests\\TestD3D.cpp"],
+  "file": "Tests\\TestD3D.cpp"
 }]

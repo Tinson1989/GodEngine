@@ -1,5 +1,18 @@
 add_rules("mode.debug", "mode.release")--"mode.releasedbg","mode.minsizerel",后面两种在学习中不需要放开
 
+package("assimp")
+    add_deps("cmake")
+    set_sourcedir(path.join(os.scriptdir(),"External", "assimp"))
+    on_install(function (package)
+        local configs = {}
+        table.insert(configs, "-DCMAKE_BUILD_TYPE=" .. (package:debug() and "Debug" or "Release"))
+        table.insert(configs, "-DBUILD_SHARED_LIBS=" .. (package:config("shared") and "ON" or "OFF"))
+        import("package.tools.cmake").install(package, configs)
+    end)
+package_end()
+add_requires("assimp")
+
+
 --包含子目录
 local function importSubProject(file)
     includes(path.join("Projects",file))
