@@ -1,0 +1,40 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2022
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EditorApp", "EditorApp\EditorApp.vcxproj", "{BB81BD00-1BC2-439C-B62D-20EC55C27138}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestGLM", "TestGLM\TestGLM.vcxproj", "{03C96DD3-06F1-43B3-8CBF-E0323CF3885C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F6C83F6F-8807-40EF-A683-4C9B8105F30F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		debug|x86 = debug|x86
+		debug|x64 = debug|x64
+		release|x86 = release|x86
+		release|x64 = release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03C96DD3-06F1-43B3-8CBF-E0323CF3885C}.debug|x86.ActiveCfg = debug|Win32
+		{03C96DD3-06F1-43B3-8CBF-E0323CF3885C}.debug|x86.Build.0 = debug|Win32
+		{03C96DD3-06F1-43B3-8CBF-E0323CF3885C}.debug|x64.ActiveCfg = debug|x64
+		{03C96DD3-06F1-43B3-8CBF-E0323CF3885C}.debug|x64.Build.0 = debug|x64
+		{03C96DD3-06F1-43B3-8CBF-E0323CF3885C}.release|x86.ActiveCfg = release|Win32
+		{03C96DD3-06F1-43B3-8CBF-E0323CF3885C}.release|x86.Build.0 = release|Win32
+		{03C96DD3-06F1-43B3-8CBF-E0323CF3885C}.release|x64.ActiveCfg = release|x64
+		{03C96DD3-06F1-43B3-8CBF-E0323CF3885C}.release|x64.Build.0 = release|x64
+		{BB81BD00-1BC2-439C-B62D-20EC55C27138}.debug|x86.ActiveCfg = debug|Win32
+		{BB81BD00-1BC2-439C-B62D-20EC55C27138}.debug|x86.Build.0 = debug|Win32
+		{BB81BD00-1BC2-439C-B62D-20EC55C27138}.debug|x64.ActiveCfg = debug|x64
+		{BB81BD00-1BC2-439C-B62D-20EC55C27138}.debug|x64.Build.0 = debug|x64
+		{BB81BD00-1BC2-439C-B62D-20EC55C27138}.release|x86.ActiveCfg = release|Win32
+		{BB81BD00-1BC2-439C-B62D-20EC55C27138}.release|x86.Build.0 = release|Win32
+		{BB81BD00-1BC2-439C-B62D-20EC55C27138}.release|x64.ActiveCfg = release|x64
+		{BB81BD00-1BC2-439C-B62D-20EC55C27138}.release|x64.Build.0 = release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03C96DD3-06F1-43B3-8CBF-E0323CF3885C} = {F6C83F6F-8807-40EF-A683-4C9B8105F30F}
+	EndGlobalSection
+EndGlobal

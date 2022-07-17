@@ -1,6 +1,21 @@
 [
 {
   "directory": "f:\\study\\GodEngine",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/I.", "/DSDEBUG", "/D_WINDOWS", "/Fobuild\\.objs\\EditorApp\\windows\\x64\\debug\\Platforms\\Windows\\Game.cpp.obj", "Platforms\\Windows\\Game.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/If:\\study\\GodEngine\\External\\glm", "/DSDEBUG", "/Fobuild\\.objs\\TestGLM\\windows\\x64\\debug\\Tests\\GLM\\TestGLM.cpp.obj", "Tests\\GLM\\TestGLM.cpp"],
+  "file": "Tests\\GLM\\TestGLM.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/If:\\study\\GodEngine\\External\\glm", "/DSDEBUG", "/Fobuild\\.objs\\TestGLM\\windows\\x64\\debug\\External\\glm\\glm\\detail\\glm.cpp.obj", "External\\glm\\glm\\detail\\glm.cpp"],
+  "file": "External\\glm\\glm\\detail\\glm.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/I.", "/IExternal\\glm", "/DSDEBUG", "/D_WINDOWS", "/Fobuild\\.objs\\EditorApp\\windows\\x64\\debug\\External\\glm\\glm\\detail\\glm.cpp.obj", "External\\glm\\glm\\detail\\glm.cpp"],
+  "file": "External\\glm\\glm\\detail\\glm.cpp"
+},
+{
+  "directory": "f:\\study\\GodEngine",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.31.31103\\bin\\HostX64\\x64\\cl.exe", "/c", "/EHsc", "/nologo", "/MTd", "/I.", "/IExternal\\glm", "/DSDEBUG", "/D_WINDOWS", "/Fobuild\\.objs\\EditorApp\\windows\\x64\\debug\\Platforms\\Windows\\Game.cpp.obj", "Platforms\\Windows\\Game.cpp"],
   "file": "Platforms\\Windows\\Game.cpp"
 }]

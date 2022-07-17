@@ -1,0 +1,11 @@
+local rootPath = path.join(os.projectdir(), "Tests")
+
+target("TestGLM")
+    set_group("test")
+    set_kind("binary")
+    add_files(path.join(rootPath, "GLM", "**.cpp"))
+    add_files(path.join(os.projectdir(),"External/glm/glm/**.cpp"))
+    add_includedirs(path.join(os.projectdir(),"External/glm"))
+    add_headerfiles(path.join(os.projectdir(),"External/glm/**.h"))
+    add_headerfiles(path.join(os.projectdir(),"External/glm/**.hpp"))
+    add_headerfiles(path.join(os.projectdir(),"External/glm/**.inl"))

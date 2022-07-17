@@ -1,5 +1,10 @@
 add_rules("mode.debug", "mode.release")--"mode.releasedbg","mode.minsizerel",后面两种在学习中不需要放开
 
+--包含子目录
+local function importSubProject(file)
+    includes(path.join("Projects",file))
+end
+
 set_project("GodEngine")
 -- set_languages("cxx17")
 if is_mode("debug") then
@@ -19,10 +24,14 @@ target("EditorApp")
     set_kind("binary")
     add_defines("_WINDOWS")
     add_files("**.cpp")
+    remove_files("Tests/**.cpp")
     add_includedirs("./")
     add_headerfiles("**.h","**.hpp","**.inc")
     set_default(true)
+    add_includedirs("External/glm/")
 
+
+importSubProject("test.lua")
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
